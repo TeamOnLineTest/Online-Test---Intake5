@@ -1,0 +1,95 @@
+<main class="main">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item"><a routerLink="/">Admin</a></li>
+    <li class="breadcrumb-item active">Users</li>
+</ol>
+
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col mr-auto">
+                        <h2 class="header-text">Users</h2>
+                    </div>
+                    <div class="col-sm-1" id="header-btn-add">
+                        <button type="button" class="btn btn-add btn-primary" data-toggle="modal" data-target="#exampleModalCenter">+Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 table-responsive">
+                        <table style="width: 100%" class=" table table-striped table-bordered table-hover " datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Account</th>
+                                    <th>Email</th>
+                                    <th>Active</th>
+                                    <th>Created Day</th>
+                                    <th>Updated Day</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd gradeX" *ngFor="let result of results">
+                                    <td class="center">{{result.use_id}}</td>
+                                    <td class="center">{{result.useaccount}}</td>
+                                    <td class="center">{{result.useemail}}</td>
+                                    <td class="center">{{result.useactive}}</td>
+                                    <td class="center">{{result.createdAt| date:'dd-MM-yyyy HH:mm a ' }}</td>
+                                    <td class="center">{{result.updatedAt | date:'dd-MM-yyyy HH:mm a ' }}</td>
+                                    <td>
+                                      <i class="fa fa-remove text-danger" (click)="delete(result.use_id)"></i>
+                                      <button class="btn bg-success" (click)="active(result.use_id)">Active</button>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</main>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add User</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group row">
+                <label for="inputAccount" class="col-sm-2 col-form-label">Account: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="user-account" placeholder="Account" name="useaccount" [(ngModel)]="useaccount">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password: </label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="user-password" placeholder="Password" name="useenc_password" [(ngModel)]="useenc_password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputActive" class="col-sm-2 col-form-label">Active: </label>
+                <div class="col-sm-10" id="radio-groups">
+                    <input class="isadmin" type="radio" name="active" checked>Yes
+                    <input class="isadmin" type="radio" name="active" >No
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="save_add()">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+</div>

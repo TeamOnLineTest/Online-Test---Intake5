@@ -1,0 +1,114 @@
+<main class="main">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item">
+            <a routerLink="/">Admin</a>
+        </li>
+        <li class="breadcrumb-item active">Semesters</li>
+    </ol>
+
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col mr-auto">
+                            <h2 class="header-text">Semesters</h2>
+                        </div>
+                        <div class="col-sm-1" id="header-btn-add">
+                            <button type="button" class="btn btn-add btn-primary" data-toggle="modal" data-target="#exampleModalCenter" (click)="state(1)">+Add</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table style="width: 100%" class="table table-striped table-bordered table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Semester</th>
+                                        <th>Year</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeX" *ngFor="let result of results">
+                                        <td class="center">{{result.sem_id}}</td>
+                                        <td class="center">{{result.semsemester}}</td>
+                                        <td class="center">{{result.semyear}}</td>
+                                        <td class="center">
+                                            <p *ngIf="result.semiscurrent==1">Is current</p>
+                                            <p *ngIf="result.semiscurrent==0">Is not current</p>
+                                        </td>
+                                        <td>
+                                            <a data-toggle="modal" data-target="#exampleModalCenter" (click)="state(2,result.sem_id)">
+                                                <i class="fa fa-edit text-success"></i>
+                                            </a>
+                                            <i class="fa fa-remove text-danger" (click)="delete(result.sem_id)"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{title}} Semester</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #myForm="ngForm">
+                    <div class="form-group row">
+                        <label for="sem-semester" class="col-sm-3 col-form-label">Semester: </label>
+                        <!--  -->
+                        <div class="col-sm-9">
+                            <input name="semsemester" type="number" class="form-control" [(ngModel)]="semsemester" placeholder="Semester">
+                            <!-- -->
+                            <!-- <div *ngIf="subjectcoderr.invalid && (subjectcoderr.dirty || subjectcoderr.touched)" class="alert alert-danger">
+                            <div *ngIf="subjectcoderr.errors.required">
+                                Cần Nhập học kỳ
+                            </div>  
+                        </div> 
+                        <div *ngIf="unique_var && (subjectcoderr.dirty || subjectcoderr.touched)" class="alert alert-danger">
+                             Dữ Liệu Trùng
+                        </div>  -->
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="form-group row">
+                        <label for="sem-year" class="col-sm-3 col-form-label">Year: </label>
+                        <div class="col-sm-9">
+                            <input type="text" id="year" name="semyear" class="form-control" [(ngModel)]="semyear" placeholder="Year">
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="form-group row">
+                        <label for="sem-status" class="col-sm-3 col-form-label">Status: </label>
+                        <div class="col-sm-9" id="radio-groups">
+                            <input class="sem-status" type="radio" name="iCheck" [value]="1" [(ngModel)]="semstatus" checked>Is current
+                            <input class="sem-status" type="radio" name="iCheck" [value]="0" [(ngModel)]="semstatus">Is not current
+                        </div>
+                    </div>
+                    <!--  -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" [disabled]="myForm.invalid || unique_var" (click)="change_state()">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

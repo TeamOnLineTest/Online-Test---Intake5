@@ -1,0 +1,141 @@
+<router-outlet></router-outlet>
+<main class="main">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item"><a routerLink="/">Admin</a></li>
+    <li class="breadcrumb-item active">Subjects</li>
+  </ol>
+  <div class="container-fluid">
+    <div class="animated fadeIn">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col mr-auto">
+              <h2 class="header-text">Subjects</h2>
+            </div>
+            <div class="col-sm-1">
+              <button type="button" class="btn btn-add btn-primary" data-toggle="modal" data-target="#exampleModalCenter" (click)="state(1)">+Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-striped table-bordered table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Mã Chủ Đề</th>
+                    <th>Tên Chủ Đề</th> 
+                    <th>Ngày Tạo</th>
+                    <th>Ngày Cập Nhật</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="odd gradeX" *ngFor="let result of results">
+                    <td class="center">{{result.sub_id}}</td>
+                    <td class="center">{{result.subcode}}</td>
+                    <td class="center">{{result.subname}}</td>
+                    <td class="center">{{result.createdAt| date:'dd-MM-yyyy HH:mm a ' }}</td>
+                    <td class="center">{{result.updatedAt | date:'dd-MM-yyyy HH:mm a ' }}</td>
+                    <td>
+                      <a data-toggle="modal" data-target="#exampleModalCenter" (click)="state(2,result.sub_id)"><i class="fa fa-edit text-success"></i></a>
+                      <i class="fa fa-remove text-danger" (click)="delete(result.sub_id)"></i>
+                      <a data-toggle="modal" data-target="#parent"  (click)="load_parent(result.parent_id)"><i class="fa fa-info"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="modal fade" id="parent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Subject</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Mã Chủ Đề</th>
+              <th>Tên Chủ Đề</th> 
+              <th>Ngày Tạo</th>
+              <th>Ngày Cập Nhật</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd gradeX" *ngFor="let resultss of results_parent">
+              <td class="center">{{resultss.sub_id}}</td>
+              <td class="center">{{resultss.subcode}}</td>
+              <td class="center">{{resultss.subname}}</td>
+              <td class="center">{{resultss.createdAt| date:'dd-MM-yyyy HH:mm a ' }}</td>
+              <td class="center">{{resultss.updatedAt | date:'dd-MM-yyyy HH:mm a ' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-add btn-primary" data-toggle="modal" data-target="#exampleModalCenter" (click)="state(1)">+Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{title}} Subject</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #myForm="ngForm">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Subject Code:</label>
+            <div class="col-sm-9">
+              <input  name="subjectcode" class="form-control" placeholder="Subject Code" required minlength="4" maxlength="20" autocomplete="off" #subjectcoderr="ngModel" [(ngModel)]="subjectcode" (input)="unique()">
+              <div *ngIf="subjectcoderr.invalid && (subjectcoderr.dirty || subjectcoderr.touched)" class="alert alert-danger">
+                <div *ngIf="subjectcoderr.errors.required">
+                  Cần Nhập mã chủ đề
+                </div>
+                <div *ngIf="subjectcoderr.errors.minlength">
+                  Phải Ít Nhất 4 Ký Tự
+                </div>  
+              </div>  
+              <div *ngIf="unique_var && (subjectcoderr.dirty || subjectcoderr.touched)" class="alert alert-danger">
+                Dữ Liệu Trùng
+              </div>         
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Name:</label>
+            <div class="col-sm-9">
+              <input name="subjectname" class="form-control" placeholder="Subject Code" minlength="4" maxlength="100" autocomplete="off" #subjectnamerr="ngModel" [(ngModel)]="subjectname">
+              <div *ngIf="subjectnamerr.invalid && (subjectnamerr.dirty || subjectnamerr.touched)" class="alert alert-danger">
+                <div *ngIf="subjectnamerr.errors.minlength">
+                  Phải Ít Nhất 4 Ký Tự
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" [disabled]="myForm.invalid || unique_var" (click)="change_state()">Save</button>
+        <button type="button" class="btn btn-secondary" id="sss" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

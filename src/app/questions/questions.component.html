@@ -1,0 +1,67 @@
+<main class="main">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+    <li class="breadcrumb-item active">Question_bank</li>        
+  </ol>
+  <div class="container">
+    <div class="animated fadeIn">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col mr-auto">
+              <h2 class="header-text"></h2>
+            </div>
+            <div class="col-sm-1" id="header-btn-add">
+              <button type="button" class="btn btn-add btn-primary" data-toggle="modal" data-target="#exampleModalCenter" (click)="state(1)">+Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-striped table-bordered table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Created Day</th>
+                    <th>Updated Day</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="odd gradeX" *ngFor="let result of results">
+                    <td class="center">{{result.que_id}}</td>
+                    <td class="center">{{result.createdAt| date:'dd-MM-yyyy HH:mm a ' }}</td>
+                    <td class="center">{{result.updatedAt | date:'dd-MM-yyyy HH:mm a ' }}</td>
+                    <td>
+                      <a data-toggle="modal" data-target="#exampleModalCenter" (click)="state(2,result.que_id)"><i class="fa fa-edit text-success"></i></a>
+                      <i class="fa fa-remove text-danger" (click)="delete(result.que_id)"></i>
+                      <a data-toggle="modal" data-target="#detail"><i class="fa fa-info"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>     
+</main>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Chọn loại câu hỏi</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="reset()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+          <button class="btn btn-success">Multiple Choice</button>
+          <button class="btn btn-success">True/False Choice</button>
+    </div>
+  </div>
+</div>
+</div>    

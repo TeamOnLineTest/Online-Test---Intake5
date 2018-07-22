@@ -1,0 +1,73 @@
+<main class="main">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">Home</li>
+      <li class="breadcrumb-item"><a href="#">Admin</a></li>
+      <li class="breadcrumb-item active">Multiple Choice</li>
+  </ol>
+  <div class="container">
+    <h1>Multiple choice</h1> 
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group row">
+          <label for="sem-semester" class="col-sm-2 col-form-label js-example-basic-single">Question:</label>
+          <div class="col-sm-10">
+            <textarea id="editor" name="editor" cols="80" rows="10"></textarea> 
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-2">Score:</div>
+          <div class="col-sm-5">
+            <input type="number" class="form-control" id="sem-semester">
+          </div>
+          <label class="col-sm-5"><input type="checkbox" class="checkbox" value="1">Shuffle choice</label>
+        </div> 
+        <div class="form-group row">
+          <label for="sem-semester" class="col-sm-2 col-form-label js-example-basic-single">Reference:</label>
+          <div class="col-sm-10">
+            <input type="taker-id" class="form-control" id="sem-semester">
+          </div>
+        </div>
+        <div class="all_ans">
+          <label for="sem-semester" class="col-sm-2 col-form-label">Choice:</label>
+          <div id="options">
+            <div class="form-group row">        
+              <div class="col-sm-1 offset-sm-2">
+                <p class="form-control-plaintext">A. <input type="checkbox" class="checkbox" value="1"></p>            
+              </div>
+              <div class="col-sm-9">
+                <input type="text" class="form-control sem-semester" placeholder="Option">
+              </div>
+            </div>
+            <div class="form-group row">        
+                <div class="col-sm-1 offset-sm-2">
+                  <p class="form-control-plaintext">B. <input type="checkbox" class="checkbox" value="1"></p>            
+                </div>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control sem-semester" placeholder="Option">
+                </div>            
+              </div>
+          </div>
+        </div> 
+        <div class="form-group row">            
+          <div class="col text-right">
+              <i class="btn btn-primary fa fa-plus pointer" id="add-row"></i> 
+              <i class="btn btn-danger fa fa-minus pointer" id="del-row"></i> 
+          </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-9">                
+            </div>
+          <div class="col-sm-1">
+          <button type="button" class="btn btn-primary">Save</button>
+          </div>
+          <div class="col-sm-1">
+          <button type="button" class="btn btn-secondary">Cancel</button>
+          </div>
+          <div class="col-sm-1">
+          <button type="button" class="btn btn-secondary">Clear</button>
+          </div>
+        </div>             
+      </div>
+    </div>      
+  </div>
+</main>

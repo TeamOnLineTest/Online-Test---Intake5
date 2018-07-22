@@ -1,0 +1,4 @@
+.table-condensed thead tr:nth-child(2),
+.table-condensed tbody {
+  display: none
+}
