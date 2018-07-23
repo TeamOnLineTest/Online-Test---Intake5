@@ -2,19 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DataTablesModule } from 'angular-datatables';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {CookieModule} from '@cedx/ngx-cookies';
 import { CKEditorModule } from 'ng2-ckeditor';
 
-import { ApiService }   from './service/api.service';
+import { ApiService } from './service/api.service';
 import { PnotifyService } from './service/pnotify.service';
-import { AuthService }   from './service/auth.service';
-import { SubjectsService }   from './service/subjects.service';
-import { QuestionsService }   from './service/questions.service';
-import { LoginService }   from './service/login.service';
-import { UsersService }   from './service/users.service';
-import { TakersService }   from './service/takers.service';
-import { SemestersService } from './service/semesters.service';
+import { AuthService } from './service/auth.service';
+import { SubjectsService } from './service/subjects.service';
+import { QuestionsService } from './service/questions.service';
+import { LoginService } from './service/login.service';
+import { UsersService } from './service/users.service';
+import { TakersService } from './service/takers.service';
 
 import { AppComponent } from './app.component';
 import { MasterComponent } from './master/master.component';
@@ -25,7 +24,6 @@ import { LoginComponent } from './login/login.component';
 import { UserTypesComponent } from './user-types/user-types.component';
 import { UsersComponent } from './users/users.component';
 
-import { SemestersComponent } from './semesters/semesters.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { TakersComponent } from './takers/takers.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
@@ -45,7 +43,6 @@ FooterComponent,
 LoginComponent,
 UserTypesComponent,
 UsersComponent,
-SemestersComponent,
 SubjectsComponent,
 TakersComponent,
 ProfileSettingComponent,
@@ -68,7 +65,6 @@ SubjectsService,
 QuestionsService,
 UsersService,
 TakersService,
-SemestersService,
 {
 provide: HTTP_INTERCEPTORS,
 useClass: AuthService,

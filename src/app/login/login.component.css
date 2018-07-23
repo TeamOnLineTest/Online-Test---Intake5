@@ -1,0 +1,29 @@
+@font-face{
+    font-family: 'Shrikhand-Regular';
+    src: url('../../assets/plugins/font-awesome/fonts/Shrikhand-Regular.ttf')
+  }
+.logins{
+    background-image: url("../../assets/img/Login.jpg");
+    display: -ms-flexbox;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+
+}
+h1{
+    font-weight: 500 !important ;
+    font-size: 40px;
+    font-family: 'Shrikhand-Regular';
+    color: #636b73;
+    text-align: center;
+}
+.text-muted{
+    text-align: center;
+}

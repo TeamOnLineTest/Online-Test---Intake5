@@ -1,1 +1,2 @@
-﻿mỗi lần làm xong gì ghi vô đây t bik nhar
+﻿còn nhìu bug w font true false ko bik làm sao
+
