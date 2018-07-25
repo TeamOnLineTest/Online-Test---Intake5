@@ -24,7 +24,7 @@ buttons: [
 'pdf'
 ]
 };
-
+unique_var :any;
 useaccount:any;
 useenc_password:any;
 
@@ -62,6 +62,9 @@ text:(<any>data).message
 });
 })
 }
+unique(){
+    this.unique_var = this.results.find(obj => obj.subcode === this.useaccount);
+    }
 
 delete(id){
 $.confirm({

@@ -24,6 +24,7 @@ data:any;
 options:any[]=[];
 dtTrigger: Subject<any> = new Subject();
 results: any;
+check:any;
 
 title:any;
 change_var:any;
@@ -113,12 +114,13 @@ console.log(this.detail.options.length);
 
 for (var i=0; i < this.detail.options.length-2; i++) {
 var alphabet = String.fromCharCode(65 + $('#options > .form-group').length);
-var row = '<div class="form-group row">' +        
-'<div class="col-sm-1 offset-sm-2">' +
-'<p class="form-control-plaintext">'+ alphabet +'. <input type="checkbox" class="checkbox" value="1"  name="choose"></p>' +
+var row=
+'<div class="form-group row">' +        
+'<div class="col-sm-2">' +
+'<p class="form-control-plaintext">'+ alphabet +'. <input type="checkbox" class="checkbox" value="1" ></p>' +
 '</div>' +
-'<div class="col-sm-9">' +
-'<input type="text" class="form-control sem-semester" name="options" placeholder="Option">' + 
+'<div class="col-sm-10">' +
+'<input type="text" class="form-control sem-semester" placeholder="Option">' + 
 '</div>' +
 '</div>';
 $('#options').append(row);

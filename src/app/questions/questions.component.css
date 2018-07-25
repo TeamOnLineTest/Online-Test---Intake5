@@ -1,3 +1,13 @@
 .modal-lg {
     max-width: 80%;
 }
+.mod1{
+    width: 59%;
+    margin: 22%
+}
+textarea{
+    width: 372px !important;
+}
+.card {
+    margin: 1px 70px 0 0;
+}

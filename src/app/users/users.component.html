@@ -1,8 +1,7 @@
 <main class="main">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
-    <li class="breadcrumb-item"><a routerLink="/">Admin</a></li>
-    <li class="breadcrumb-item active">Users</li>
+    <li class="breadcrumb-item">Users</li>
 </ol>
 
 <div class="container-fluid">
@@ -14,7 +13,7 @@
                         <h2 class="header-text">Users</h2>
                     </div>
                     <div class="col-sm-1" id="header-btn-add">
-                        <button type="button" class="btn btn-add btn-primary" data-toggle="modal" data-target="#exampleModalCenter">+Add</button>
+                        <button type="button" class="btn btn-add btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add</button>
                     </div>
                 </div>
             </div>
@@ -69,8 +68,19 @@
             <div class="form-group row">
                 <label for="inputAccount" class="col-sm-2 col-form-label">Account: </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="user-account" placeholder="Account" name="useaccount" [(ngModel)]="useaccount">
-                </div>
+                        <input  name="subjectcode" class="form-control" id="user-account" placeholder="Account" required minlength="4" maxlength="20" autocomplete="off" #subjectcoderr="ngModel" [(ngModel)]="useaccount" (input)="unique()">
+                        <div *ngIf="subjectcoderr.invalid && (subjectcoderr.dirty || subjectcoderr.touched)" class="alert alert-danger">
+                          <div *ngIf="subjectcoderr.errors.required">
+                             Unless 4 characters
+                          </div>
+                          <div *ngIf="subjectcoderr.errors.minlength">
+                            Unless 4 characters
+                          </div>  
+                        </div>  
+                        <div *ngIf="unique_var && (subjectcoderr.dirty || subjectcoderr.touched)" class="alert alert-danger">
+                          Data
+                        </div>         
+                      </div>
             </div>
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password: </label>
@@ -87,7 +97,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="save_add()">Save</button>
+            <button type="button" class="btn btn-primary" [disabled]="myForm.invalid || unique_var" (click)="save_add()">Save</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
     </div>

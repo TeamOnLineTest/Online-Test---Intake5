@@ -14,10 +14,13 @@
             <a class="nav-link" routerLink=""><i class="fas fa-book"></i>GROUP</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" routerLink="/subjects"><i class="fas fa-book"></i>SUBJECTS</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" routerLink=""><i class="fas fa-book"></i>TEST</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/takers"><i class="fas fa-book"></i>TAKER</a>
+            <a class="nav-link" routerLink="/takers"><i class="fas fa-book"></i>EXAM TAKER</a>
           </li>
         </ul>
       </li>
@@ -38,11 +41,11 @@
       </li>
 
       <li class="nav-item ">
-        <a class="nav-link"  routerLink="/profile-setting" ><i class="fas fa-cogs"></i>SETTING</a>
+        <a class="nav-link"  routerLink="/profile-setting" ><i class="fas fa-cogs"></i>ACCOUNT SETTING</a>
       </li>
 
       <li class="nav-item ">
-        <a class="nav-link"  routerLink="/login" ><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
+        <a class="nav-link"  routerLink="/login" (click)="logout()" ><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
       </li>
       <!-- <li class="divider"></li> -->
       

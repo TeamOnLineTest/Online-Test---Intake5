@@ -21,14 +21,12 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-import { UserTypesComponent } from './user-types/user-types.component';
 import { UsersComponent } from './users/users.component';
 
 import { SubjectsComponent } from './subjects/subjects.component';
 import { TakersComponent } from './takers/takers.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 import { QuestionsComponent } from './questions/questions.component';
-import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.component';
 
 import { routing } from './app.routing';
 
@@ -41,13 +39,11 @@ HeaderComponent,
 SidebarComponent,
 FooterComponent,
 LoginComponent,
-UserTypesComponent,
 UsersComponent,
 SubjectsComponent,
 TakersComponent,
 ProfileSettingComponent,
 QuestionsComponent,
-MultipleChoiceComponent
 ],
 imports: [
 BrowserModule,
