@@ -1,7 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 
-
-
 import { AppComponent } from './app.component';
 import { MasterComponent } from './master/master.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,11 +17,15 @@ const appRoutes: Routes = [
       { path: '', component: MasterComponent,
         children: [
           { path: '', component: UsersComponent },
+          { path: 'app', component: AppComponent },
           { path: 'users', component: UsersComponent },       
           { path: 'subjects', component: SubjectsComponent },
           { path: 'takers', component: TakersComponent },
           { path: 'profile-setting', component: ProfileSettingComponent },
           { path: 'questions', component: QuestionsComponent },   
+          { path: 'header', component: HeaderComponent }, 
+          { path: 'sidebar', component: SidebarComponent }, 
+          { path: 'footer', component: FooterComponent }, 
         ]
       }
 ];

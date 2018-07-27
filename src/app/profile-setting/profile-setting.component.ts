@@ -10,6 +10,6 @@ export class ProfileSettingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-
+    $.getScript('assets/js/takers.js');
+    }
 }
